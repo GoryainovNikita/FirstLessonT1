@@ -3,10 +3,14 @@ package com.example.supplier_service.category.model;
 public final class CategoryMapper {
 
     public static CategoryDTO toDTO(Category category){
-
         CategoryDTO categoryDTO = new CategoryDTO();
-        categoryDTO.setId(category.getId());
-        categoryDTO.setName(category.getName());
+        try{
+            categoryDTO.setId(category.getId());
+            categoryDTO.setName(category.getName());
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
         return categoryDTO;
     }
 

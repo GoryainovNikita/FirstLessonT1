@@ -69,7 +69,7 @@ public class ProductController {
     }
 
     @GetMapping(params = {"category_id"})
-    public List<ProductDTO> getByName(@RequestParam(value = "category_id") Long categoryId){
+    public List<ProductDTO> getByCategoryId(@RequestParam(value = "category_id") Long categoryId){
         List<Product> byCategoryId = productService.getByCategoryId(categoryId);
         List<ProductDTO> productDTOList = new ArrayList<>();
         for(var elem : byCategoryId){
@@ -77,5 +77,53 @@ public class ProductController {
             productDTOList.add(productDTO);
         }
         return productDTOList;
+    }
+
+    @GetMapping(params = {"category_name"})
+    public List<ProductDTO> getByCategoryId(@RequestParam(value = "category_name") String name){
+        List<Product> byCategoryName = productService.getByCategoryName(name);
+        List<ProductDTO> productDTOList = new ArrayList<>();
+        for(var elem : byCategoryName){
+            ProductDTO productDTO = ProductMapper.toDTO(elem);
+            productDTOList.add(productDTO);
+        }
+        return productDTOList;
+    }
+
+    @GetMapping(params = {"price"})
+    public List<ProductDTO> getByPrice(@RequestParam(value = "price") int price){
+        List<Product> byPrice = productService.getByPrice(price);
+        List<ProductDTO> productDTOList = new ArrayList<>();
+        for(var elem : byPrice){
+            ProductDTO productDTO = ProductMapper.toDTO(elem);
+            productDTOList.add(productDTO);
+        }
+        return productDTOList;
+    }
+
+    @GetMapping(params = {"price_more"})
+    public List<ProductDTO> getByPriceMoreThen(@RequestParam(value = "price_more") int price){
+        List<Product> byPrice = productService.getByPriceWherePriceMoreThen(price);
+        List<ProductDTO> productDTOList = new ArrayList<>();
+        for(var elem : byPrice){
+            ProductDTO productDTO = ProductMapper.toDTO(elem);
+            productDTOList.add(productDTO);
+        }
+        return productDTOList;
+    }
+    @GetMapping(params = {"price_less"})
+    public List<ProductDTO> getByPriceLessThen(@RequestParam(value = "price_less") int price){
+        List<Product> byPrice = productService.getByPriceWherePriceLessThen(price);
+        List<ProductDTO> productDTOList = new ArrayList<>();
+        for(var elem : byPrice){
+            ProductDTO productDTO = ProductMapper.toDTO(elem);
+            productDTOList.add(productDTO);
+        }
+        return productDTOList;
+    }
+
+    @GetMapping(params = {"description"})
+    public ProductDTO getByDescription(@RequestParam(value = "description") String name){
+        return ProductMapper.toDTO(productService.findByDescription(name));
     }
 }

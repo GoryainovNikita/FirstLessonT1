@@ -47,4 +47,25 @@ public class ProductService {
        return productRepository.getProductsByCategory_Id(id);
     }
 
+    public List<Product> getByPrice(int price){
+        return productRepository.findByPrice(price);
+    }
+
+    public List<Product> getByCategoryName(String name){
+        return productRepository.findByCategoryName(name);
+    }
+
+    public List<Product> getByPriceWherePriceMoreThen(int price){
+        return productRepository.findProductsByPriceAfter(price);
+    }
+
+    public List<Product> getByPriceWherePriceLessThen(int price){
+        return productRepository.findProductsByPriceBefore(price);
+    }
+
+    public Product findByDescription(String name){
+        Product product = productRepository.findProductsByDescriptionContainsIgnoreCase(name);
+        return product;
+    }
+
 }

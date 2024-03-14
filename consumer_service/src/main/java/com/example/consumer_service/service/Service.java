@@ -79,4 +79,45 @@ public class Service {
     public void deleteCategory(Long id){
         restTemplate.delete(urlCategories + "/" + id, Void.class);
     }
+
+    public List<Product> getProductByCategoryId(Long id){
+        builder = UriComponentsBuilder.fromUri(URI.create(urlProduct)).queryParam("category_id", id);
+        ResponseEntity<Product[]> responseEntity = restTemplate.getForEntity(builder.toUriString(), Product[].class);
+        Product[] products = responseEntity.getBody();
+        return Arrays.stream(products).toList();
+    }
+
+    public List<Product> getProductByCategoryName(String name){
+        builder = UriComponentsBuilder.fromUri(URI.create(urlProduct)).queryParam("category_name", name);
+        ResponseEntity<Product[]> responseEntity = restTemplate.getForEntity(builder.toUriString(), Product[].class);
+        Product[] products = responseEntity.getBody();
+        return Arrays.stream(products).toList();
+    }
+
+    public List<Product> getProductByPrice(int price){
+        builder = UriComponentsBuilder.fromUri(URI.create(urlProduct)).queryParam("price", price);
+        ResponseEntity<Product[]> responseEntity = restTemplate.getForEntity(builder.toUriString(), Product[].class);
+        Product[] products = responseEntity.getBody();
+        return Arrays.stream(products).toList();
+    }
+    public List<Product> getProductByPriceMoreThen(int price){
+        builder = UriComponentsBuilder.fromUri(URI.create(urlProduct)).queryParam("price_more", price);
+        ResponseEntity<Product[]> responseEntity = restTemplate.getForEntity(builder.toUriString(), Product[].class);
+        Product[] products = responseEntity.getBody();
+        return Arrays.stream(products).toList();
+    }
+    public List<Product> getProductByPriceLessThen(int price){
+        builder = UriComponentsBuilder.fromUri(URI.create(urlProduct)).queryParam("price_less", price);
+        ResponseEntity<Product[]> responseEntity = restTemplate.getForEntity(builder.toUriString(), Product[].class);
+        Product[] products = responseEntity.getBody();
+        return Arrays.stream(products).toList();
+    }
+
+    public Product getProductByDescription(String description){
+        builder = UriComponentsBuilder.fromUri(URI.create(urlProduct)).queryParam("description", description);
+        Product product = restTemplate.getForObject(builder.toUriString(), Product.class);
+        return product;
+    }
+
+
 }
