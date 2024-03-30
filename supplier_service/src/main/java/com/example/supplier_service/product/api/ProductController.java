@@ -80,7 +80,7 @@ public class ProductController {
     }
 
     @GetMapping(params = {"category_name"})
-    public List<ProductDTO> getByCategoryId(@RequestParam(value = "category_name") String name){
+    public List<ProductDTO> getByCategoryName(@RequestParam(value = "category_name") String name){
         List<Product> byCategoryName = productService.getByCategoryName(name);
         List<ProductDTO> productDTOList = new ArrayList<>();
         for(var elem : byCategoryName){
