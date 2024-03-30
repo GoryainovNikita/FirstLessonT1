@@ -3,7 +3,7 @@ package com.example.supplier_service.category.model;
 import com.example.supplier_service.product.model.Product;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.BatchSize;
+
 
 
 import java.util.List;

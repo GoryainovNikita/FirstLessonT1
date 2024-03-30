@@ -4,7 +4,6 @@ import com.example.supplier_service.category.model.Category;
 import com.example.supplier_service.category.model.CategoryDTO;
 import com.example.supplier_service.category.repository.CategoryRepository;
 import com.example.supplier_service.category.service.CategoryService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import org.junit.jupiter.api.AfterAll;
@@ -30,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 
 @SpringBootTest(classes = SupplierServiceApplication.class)
 @AutoConfigureMockMvc

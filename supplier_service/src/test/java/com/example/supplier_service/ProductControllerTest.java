@@ -1,9 +1,6 @@
 package com.example.supplier_service;
 
-import com.example.supplier_service.category.model.Category;
-import com.example.supplier_service.category.model.CategoryDTO;
-import com.example.supplier_service.category.repository.CategoryRepository;
-import com.example.supplier_service.category.service.CategoryService;
+
 import com.example.supplier_service.product.model.Product;
 import com.example.supplier_service.product.model.ProductDTO;
 import com.example.supplier_service.product.repository.ProductRepository;
